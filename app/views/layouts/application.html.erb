@@ -19,7 +19,7 @@
       <ul>
         <li class="category">Website</li>
         <li><%= link_to "Blog", root_path %></li>
-        <li>About</li>
+        <li><%= link_to "About", about_path %></li>
       </ul>
 
       <ul>
@@ -27,20 +27,37 @@
         <li><a href="https://twitter.com/sfee27" target=_new>Twitter</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=100015548625768" target=_new>Facebook</a></li>
         <li><a href="https://github.com/feixiguang" target=_new>Github</a></li>
-        <li><a href="sfxg27@gmail.com" target=_new>Email</a></li>
+        <li><a href="<%= email_path %>">Email</a></li>
       </ul>
-
-      <p class="sign_in">Admin Login</p>
+      <% if !user_signed_in? %>
+        <p class="sign_in">Admin Login</p>
+      <% end %>
     </div>
 
     <div id="main_content">
       <div id="header">
-        <p>All Posts</p>
+        <% if current_page?(root_path) %>
+          <p>All Posts</p>
+        <% elsif current_page?(about_path)%>
+          <p>About</p>
+        <% elsif current_page?(email_path)%>
+          <p>Email</p>
+        <% else %>
+         <%= link_to "Back to All Posts", root_path %>
+        <% end %>
 
-        <div class="buttons">
-          <button class="button"><%= link_to "New Post", new_post_path %></button>
-          <button class="button">Log Out</button>
-        </div>
+
+          <div class="buttons">
+            <% if !current_user %>
+                <button class="button"><%= link_to("Sign up", new_user_registration_path) %></button>
+                <button class="button"><%= link_to("Log in", new_user_session_path) %></button>
+            <% else %>
+              <button class="button"><%= link_to "New Post", new_post_path %></button>
+              <button class="button">Hi!, <%= current_user.email %></button>
+              <button class="button"><%= link_to("Log out", destroy_user_session_path, method: :delete) %></button>
+            <% end  %>
+          </div>
+
       </div>
 
       <% flash.each do |name, msg| %>
