@@ -1,24 +1,6 @@
-# README
+Hey, I'm Feixiguang
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to week 1 of my 12 Web Apps in 12 Weeks Challenge.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This week I built a blog in Rails 5. You're actually on the demo application right now.
+   Cool stuff, right!.
