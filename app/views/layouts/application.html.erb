@@ -44,12 +44,18 @@
          <%= link_to "Back to All Posts", root_path %>
         <% end %>
 
-        <% if user_signed_in? %>
+
           <div class="buttons">
-            <button class="button"><%= link_to "New Post", new_post_path %></button>
-            <button class="button">Log Out</button>
+            <% if !current_user %>
+                <button class="button"><%= link_to("Sign up", new_user_registration_path) %></button>
+                <button class="button"><%= link_to("Log in", new_user_session_path) %></button>
+            <% else %>
+              <button class="button"><%= link_to "New Post", new_post_path %></button>
+              <button class="button">Hi!, <%= current_user.email %></button>
+              <button class="button"><%= link_to("Log out", destroy_user_session_path, method: :delete) %></button>
+            <% end  %>
           </div>
-        <% end  %>
+
       </div>
 
       <% flash.each do |name, msg| %>
