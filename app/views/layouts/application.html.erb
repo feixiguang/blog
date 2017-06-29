@@ -27,7 +27,7 @@
         <li><a href="https://twitter.com/sfee27" target=_new>Twitter</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=100015548625768" target=_new>Facebook</a></li>
         <li><a href="https://github.com/feixiguang" target=_new>Github</a></li>
-        <li><a href="sfxg27@gmail.com" target=_new>Email</a></li>
+        <li><a href="<%= email_path %>">Email</a></li>
       </ul>
       <% if !user_signed_in? %>
         <p class="sign_in">Admin Login</p>
@@ -40,6 +40,8 @@
           <p>All Posts</p>
         <% elsif current_page?(about_path)%>
           <p>About</p>
+        <% elsif current_page?(email_path)%>
+          <p>Email</p>
         <% else %>
          <%= link_to "Back to All Posts", root_path %>
         <% end %>
